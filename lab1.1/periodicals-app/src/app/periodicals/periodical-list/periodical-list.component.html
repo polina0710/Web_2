@@ -1,7 +1,12 @@
-<p>periodical-list works!</p>
 <ul>
-    <li *ngFor="let periodical of periodicals">
-      {{ periodical.name }} - {{ periodical.publisher }} ({{ periodical.price }} BYN)
-    </li>
-  </ul>
-  
+  <li *ngFor="let periodical of periodicals" (click)="selectPeriodical(periodical)">
+    {{ periodical.name }}
+  </li>
+</ul>
+
+<div *ngIf="selectedPeriodical">
+  <h2>Details</h2>
+  <p><strong>Name:</strong> {{ selectedPeriodical.name }}</p>
+  <p><strong>Publisher:</strong> {{ selectedPeriodical.publisher }}</p>
+  <p><strong>Price:</strong> {{ selectedPeriodical.price }} BYN</p>
+</div>
