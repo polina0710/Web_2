@@ -1,0 +1,29 @@
+<h2>{{ periodical.id ? 'Edit Periodical' : 'Add New Periodical' }}</h2>
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+  <label for="id">ID</label>
+  <input type="number" id="id" [(ngModel)]="periodical.id" name="id" required>
+
+  <label for="name">Name</label>
+  <input type="text" id="name" [(ngModel)]="periodical.name" name="name" required>
+
+  <label for="publisher">Publisher</label>
+  <input type="text" id="publisher" [(ngModel)]="periodical.publisher" name="publisher" required>
+
+  <label for="price">Price</label>
+  <input type="number" id="price" [(ngModel)]="periodical.price" name="price" required>
+
+  <button type="submit" [disabled]="form.invalid">
+    {{ periodical.id ? 'Save Changes' : 'Add Periodical' }}
+  </button>
+
+  <button type="button" (click)="goBack()">Back</button>
+</form>
+
+<h3>Existing Periodicals</h3>
+<ul *ngIf="periodicals.length > 0; else noPeriodicals">
+  <li *ngFor="let p of periodicals">{{ p.id }} - {{ p.name }} - {{ p.publisher }} - {{ p.price }} BYN</li>
+</ul>
+
+<ng-template #noPeriodicals>
+  <p>No periodicals available.</p>
+</ng-template>

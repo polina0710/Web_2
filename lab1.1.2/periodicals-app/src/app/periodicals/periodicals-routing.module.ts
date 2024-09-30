@@ -9,7 +9,6 @@ const routes: Routes = [
   {
     path: '', component: PeriodicalCenterComponent, children: [
       { path: '', component: PeriodicalListComponent },  // Путь для списка изданий
-      { path: ':id', component: PeriodicalDetailsComponent }  // Путь для деталей изданий
     ]
   },
   { path: 'form', component: PeriodicalFormComponent }
